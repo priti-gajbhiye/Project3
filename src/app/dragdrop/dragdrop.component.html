@@ -1,0 +1,30 @@
+<div class="main" width="100%">
+<div class="row">
+  <div class="col-md-4">
+    <div class="">
+      <h2>Draggable Items</h2>
+
+      <div id="dragpoint" cdkDropList [cdkDropListData]="all" cdkDropListConnectedTo="droppoint" class="example-list"
+        (cdkDropListDropped)="drop($event)" [cdkDropListEnterPredicate]="noReturnPredicate">
+        <div class="example-box" *ngFor="let number of all" [cdkDragData]="number" cdkDrag>{{number}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8">
+   
+      <h2>Drop here</h2>
+
+      <div id="droppoint" cdkDropList [cdkDropListData]="even" cdkDropListConnectedTo="dragpoint" class="example-list"
+        (cdkDropListDropped)="drop($event)">
+       
+        <div>
+          <app-textbox *ngIf="even[0] === 'Textbox'"></app-textbox>
+          <app-button *ngIf="even[0] === 'Button'"></app-button>
+          <app-list *ngIf="even[0] === 'List'"></app-list>
+        </div>
+      </div>
+    </div>
+  
+</div>
+</div>
